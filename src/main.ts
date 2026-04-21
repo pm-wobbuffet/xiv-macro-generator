@@ -43,6 +43,10 @@ document.onreadystatechange = () => {
         frmMacroForm.addEventListener('input', () => {
             generateOutput()
         })
+        txtOutput.addEventListener('change', () => {
+            txtOutput.style.height = 'auto'
+            txtOutput.style.height = txtOutput.scrollHeight + 'px'
+        })
     }
 }
 
@@ -68,6 +72,6 @@ const generateOutput = () => {
         s += "\n"
     })
 
-    txtOutput.value = s
+    txtOutput.value = s.substring(0, s.length - 1)
     
 }
