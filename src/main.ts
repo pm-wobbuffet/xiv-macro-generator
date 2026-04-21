@@ -14,12 +14,14 @@ let txtMacroString: HTMLTextAreaElement;
 let frmMacroForm: HTMLFormElement;
 let txtOutput: HTMLTextAreaElement;
 let btnCopy: HTMLButtonElement;
+let lineLimitWarning: HTMLDivElement;
 
 document.onreadystatechange = () => {
     if(document.readyState == 'complete') {
         txtMacroString = document.getElementById('txtTemplate') as HTMLTextAreaElement
         txtOutput = document.getElementById('txtOutput') as HTMLTextAreaElement
         btnCopy = document.getElementById('btnCopy') as HTMLButtonElement
+        lineLimitWarning = document.getElementById('lineLimitWarning') as HTMLDivElement
 
         const iconBlock = document.getElementById('customIconsBlock') as HTMLDivElement
         unicodeCharBlocks.forEach((block) => {
@@ -91,6 +93,14 @@ const generateOutput = () => {
         s += txtMacroString.value
         s += "\n"
     })
+
+    if(chatChannels.length > 15) {
+        lineLimitWarning.classList.remove('hidden')
+        lineLimitWarning.classList.add('flex')
+    } else {
+        lineLimitWarning.classList.remove('flex')
+        lineLimitWarning.classList.add('hidden')
+    }
 
     txtOutput.value = s.substring(0, s.length - 1)
     txtOutput.dispatchEvent(new Event('change', {bubbles: true}))

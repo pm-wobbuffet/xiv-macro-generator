@@ -34,49 +34,49 @@ Hunt Train starting at &lt;flag&gt;</textarea
                                 <ul>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="outputs" value="l1" />
+                                            <input type="checkbox" name="outputs" value="l1" data-local="1" />
                                             LS1
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="outputs" value="l2" />
+                                            <input type="checkbox" name="outputs" value="l2" data-local="1" />
                                             LS2
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="outputs" value="l3" />
+                                            <input type="checkbox" name="outputs" value="l3" data-local="1" />
                                             LS3
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="outputs" value="l4" />
+                                            <input type="checkbox" name="outputs" value="l4" data-local="1" />
                                             LS4
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="outputs" value="l5" />
+                                            <input type="checkbox" name="outputs" value="l5" data-local="1" />
                                             LS5
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="outputs" value="l6" />
+                                            <input type="checkbox" name="outputs" value="l6" data-local="1" />
                                             LS6
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="outputs" value="l7" />
+                                            <input type="checkbox" name="outputs" value="l7" data-local="1" />
                                             LS7
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="outputs" value="l8" />
+                                            <input type="checkbox" name="outputs" value="l8" data-local="1" />
                                             LS8
                                         </label>
                                     </li>
@@ -92,49 +92,49 @@ Hunt Train starting at &lt;flag&gt;</textarea
                                 <ul>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="outputs" value="cwl1" />
+                                            <input type="checkbox" name="outputs" value="cwl1" data-cw="1" />
                                             CWLS1
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="outputs" value="cwl2" />
+                                            <input type="checkbox" name="outputs" value="cwl2" data-cw="1" />
                                             CWLS2
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="outputs" value="cwl3" />
+                                            <input type="checkbox" name="outputs" value="cwl3" data-cw="1" />
                                             CWLS3
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="outputs" value="cwl4" />
+                                            <input type="checkbox" name="outputs" value="cwl4" data-cw="1" />
                                             CWLS4
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="outputs" value="cwl5" />
+                                            <input type="checkbox" name="outputs" value="cwl5" data-cw="1" />
                                             CWLS5
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="outputs" value="cwl6" />
+                                            <input type="checkbox" name="outputs" value="cwl6" data-cw="1" />
                                             CWLS6
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="outputs" value="cwl7" />
+                                            <input type="checkbox" name="outputs" value="cwl7" data-cw="1" />
                                             CWLS7
                                         </label>
                                     </li>
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="outputs" value="cwl8" />
+                                            <input type="checkbox" name="outputs" value="cwl8" data-cw="1" />
                                             CWLS8
                                         </label>
                                     </li>
@@ -196,7 +196,29 @@ Hunt Train starting at &lt;flag&gt;</textarea
                     </div>
                     <div>
                         <h2 class="font-bold">Output</h2>
-                        <textarea class="block w-full border border-border p-1" id="txtOutput"></textarea>
+                        <textarea class="w-full border border-border p-1" id="txtOutput"></textarea>
+                        <div
+                            class="p-1 border mt-4 text-sm hidden border-warning text-warning items-center"
+                            id="lineLimitWarning"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-triangle-alert-icon lucide-triangle-alert"
+                            >
+                                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                                <path d="M12 9v4" />
+                                <path d="M12 17h.01" />
+                            </svg>
+                            <div>Warning! This macro is over 15 lines long and will be truncated in game.</div>
+                        </div>
                         <button type="button" class="mt-4 bg-code-bg border rounded-md p-1" id="btnCopy">Copy</button>
                     </div>
                 </div>
@@ -205,7 +227,7 @@ Hunt Train starting at &lt;flag&gt;</textarea
         <script type="module" src="/src/main.ts"></script>
         <script lang="text/javascript">
             toggleLocal = () => {
-                const p = document.querySelectorAll('[value*="l"]')
+                const p = document.querySelectorAll('[data-local="1"]')
                 let newState = true
                 if(p[0].checked == true) {
                     newState = false
@@ -217,7 +239,7 @@ Hunt Train starting at &lt;flag&gt;</textarea
             }
 
             toggleCrossworld = () => {
-                const p = document.querySelectorAll('[value*="cwl"]')
+                const p = document.querySelectorAll('[data-cw="1"]')
                 let newState = true
                 if(p[0].checked == true) {
                     newState = false
