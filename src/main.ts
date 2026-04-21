@@ -13,11 +13,13 @@ const unicodeCharBlocks = [
 let txtMacroString: HTMLTextAreaElement;
 let frmMacroForm: HTMLFormElement;
 let txtOutput: HTMLTextAreaElement;
+let btnCopy: HTMLButtonElement;
 
 document.onreadystatechange = () => {
     if(document.readyState == 'complete') {
         txtMacroString = document.getElementById('txtTemplate') as HTMLTextAreaElement
         txtOutput = document.getElementById('txtOutput') as HTMLTextAreaElement
+        btnCopy = document.getElementById('btnCopy') as HTMLButtonElement
 
         const iconBlock = document.getElementById('customIconsBlock') as HTMLDivElement
         unicodeCharBlocks.forEach((block) => {
@@ -47,6 +49,24 @@ document.onreadystatechange = () => {
             txtOutput.style.height = 'auto'
             txtOutput.style.height = txtOutput.scrollHeight + 'px'
         })
+
+        btnCopy.addEventListener('click', () => {
+            const text = txtOutput.value
+            if(text) {
+                if(navigator.clipboard) {
+                    navigator.clipboard.writeText(text)
+                    .then(() => {
+                        btnCopy.textContent = 'Copied!'
+                        setTimeout(() => {
+                            btnCopy.textContent = 'Copy'
+                        }, 2000)
+                    })
+                    .catch((err) => {
+                        console.log(err)
+                    })
+                }
+            }
+        })
     }
 }
 
@@ -73,5 +93,6 @@ const generateOutput = () => {
     })
 
     txtOutput.value = s.substring(0, s.length - 1)
+    txtOutput.dispatchEvent(new Event('change', {bubbles: true}))
     
 }
