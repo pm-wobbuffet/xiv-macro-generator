@@ -13,6 +13,8 @@
     --color-border: var(--border);
     --color-code-bg: var(--code-bg);
     --color-warning: var(--warning);
+    --color-accent: var(--accent);
+    --color-accent-light: var(--accent-bg);
 }
 
 :root {
@@ -89,5 +91,5 @@ textarea {
 }
 
 .faux-btn {
-    @apply text-xs m-0.5 border w-8 flex items-center justify-center;
+    @apply text-xs m-0.5 border rounded-sm border-accent-light w-8 flex items-center justify-center cursor-pointer hover:bg-accent-light;
 }
