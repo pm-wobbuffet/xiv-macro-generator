@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>XIV Macro Generator</title>
+    </head>
+    <body>
+        <div id="app">
+            <form method="get" onsubmit="return false;" id="frmMacroForm">
+                <h1 class="text-2xl font-bold">Macro Generator</h1>
+                <div class="grid md:grid-cols-2 gap-2">
+                    <div class="text-left">
+                        <h2 class="font-bold">Text Template</h2>
+                        <textarea class="block w-full border border-border p-1" id="txtTemplate">
+Hunt Train starting at &lt;flag&gt;</textarea
+                        >
+                        <h2 class="font-bold">Special Characters</h2>
+                        <div class="text-xs">
+                            Click any character to insert it at the active position in the text box above.
+                        </div>
+                        <div id="customIconsBlock"></div>
+
+                        <h2 class="font-bold mt-4">Select Chat Channels</h2>
+                        <div class="grid grid-cols-3 gap-x-1">
+                            <div>
+                                <div class="border-b">
+                                    Local
+                                    <span class="text-sm">[<a href="#" onclick="toggleLocal()">Toggle all</a>]</span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="ls1" />
+                                            LS1
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="ls2" />
+                                            LS2
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="ls3" />
+                                            LS3
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="ls4" />
+                                            LS4
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="ls5" />
+                                            LS5
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="ls6" />
+                                            LS6
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="ls7" />
+                                            LS7
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="ls8" />
+                                            LS8
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="border-b">
+                                    Crossworld
+                                    <span class="text-sm"
+                                        >[<a href="#" onclick="toggleCrossworld()">Toggle all</a>]</span
+                                    >
+                                </div>
+                                <ul>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="cwl1" />
+                                            CWLS1
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="cwl2" />
+                                            CWLS2
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="cwl3" />
+                                            CWLS3
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="cwl4" />
+                                            CWLS4
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="cwl5" />
+                                            CWLS5
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="cwl6" />
+                                            CWLS6
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="cwl7" />
+                                            CWLS7
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="cwl8" />
+                                            CWLS8
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="border-b">
+                                    Other
+                                    <span class="text-sm">[<a href="#" onclick="toggleMisc()">Toggle all</a>]</span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="s" data-misc="1" />
+                                            Say
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="y" data-misc="1" />
+                                            Yell
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="s" data-misc="1" />
+                                            Shout
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="p" data-misc="1" />
+                                            Party
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="fc" data-misc="1" />
+                                            Free Company
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="n" data-misc="1" />
+                                            Novice Network
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="outputs" value="e" data-misc="1" />
+                                            Echo log
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <button class="border p-1 rounded-sm mt-4 bg-code-bg">Generate</button>
+                    </div>
+                    <div>
+                        <h2 class="font-bold">Output</h2>
+                        <textarea class="block w-full border border-border p-1" id="txtOutput"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script type="module" src="/src/main.ts"></script>
+        <script lang="text/javascript">
+            toggleLocal = () => {
+                const p = document.querySelectorAll('[value*="ls"]')
+                let newState = true
+                if(p[0].checked == true) {
+                    newState = false
+                }
+                p.forEach((el) => {
+                    el.checked = newState
+                    el.dispatchEvent(new Event('change', {bubbles: true}))
+                })
+            }
+
+            toggleCrossworld = () => {
+                const p = document.querySelectorAll('[value*="cwl"]')
+                let newState = true
+                if(p[0].checked == true) {
+                    newState = false
+                }
+                p.forEach((el) => {
+                    el.checked = newState
+                    el.dispatchEvent(new Event('change', {bubbles: true}))
+                })
+            }
+
+            toggleMisc = () => {
+                const p = document.querySelectorAll('[data-misc="1"]')
+                let newState = true
+                if(p[0].checked == true) {
+                    newState = false
+                }
+                p.forEach((el) => {
+                    el.checked = newState
+                    el.dispatchEvent(new Event('change', {bubbles: true}))
+                })
+            }
+        </script>
+    </body>
+</html>
